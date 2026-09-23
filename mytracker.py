@@ -13,6 +13,12 @@ print()
 print(f"Hello {name}, let's get started!")
 print()
 
+def add_expense():
+    print("Add expense here")
+
+
+def view_expenses():
+    print("View expenses")
 
 choice = ""
 
@@ -33,10 +39,10 @@ while choice != "3":
     print()
     
     if choice == "1":
-        print("Feature coming soon")
+        add_expense()
         print()
     elif choice == "2":
-        print("Feature coming soon")
+        view_expenses()
         print()
     elif choice == "3":
         print("Exiting...")
