@@ -1,3 +1,5 @@
+import csv
+
 # welcome
 print("=========================")
 print()
@@ -39,6 +41,7 @@ def add_expense():
     # print(f"Amount: {amount}")
 
     expenses.append(new_expense)
+    save_expenses()
     print("current expenses: ", expenses)
 
 def view_expenses():
@@ -48,8 +51,16 @@ def view_expenses():
     for index, expense in enumerate(expenses):
         print(f"{index + 1}. Description: {expense['description']}, Category: {expense['category']}, Amount: {expense['amount']}")
 
-
-
+def save_expenses():
+    with open("expenses.csv", "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Description", "Category", "Amount"])
+        for expense in expenses:
+            writer.writerow([
+                expense["description"],
+                  expense["category"],
+                    expense["amount"]])   
+        
 choice = ""
 
 # while loop to run after each input and exit on 3
@@ -73,6 +84,7 @@ while choice != "3":
         print()
     elif choice == "2":
         view_expenses()
+        save_expenses()
         print()
     elif choice == "3":
         print("Exiting...")
@@ -81,5 +93,4 @@ while choice != "3":
         print()
 print("Goodbye!")
 print("=========================")
-
 
