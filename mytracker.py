@@ -61,6 +61,24 @@ def save_expenses():
                   expense["category"],
                     expense["amount"]])   
         
+def load_expenses():
+    with open("expenses.csv", "r", newline="") as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip the header row
+
+        for row in reader:
+            description = row[0]
+            category = row[1]
+            amount = float(row[2])
+
+            expenses.append({
+                "description": description,
+                "category": category,
+                "amount": amount
+            })  
+
+load_expenses()
+
 choice = ""
 
 # while loop to run after each input and exit on 3
@@ -93,4 +111,6 @@ while choice != "3":
         print()
 print("Goodbye!")
 print("=========================")
+
+load_expenses()
 
