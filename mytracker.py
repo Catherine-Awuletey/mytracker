@@ -13,6 +13,7 @@ print()
 print(f"Hello {name}, let's get started!")
 print()
 
+expenses = []
 
 def add_expense():
     description = input("Enter expense description: ")
@@ -36,6 +37,9 @@ def add_expense():
     # print(f"Description: {expense}")
     # print(f"Category: {category}")
     # print(f"Amount: {amount}")
+
+    expenses.append(new_expense)
+    print("current expenses: ", expenses)
 
 def view_expenses():
     print("View expenses")
@@ -71,4 +75,5 @@ while choice != "3":
         print()
 print("Goodbye!")
 print("=========================")
+
 
