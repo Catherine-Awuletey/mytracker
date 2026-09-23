@@ -42,7 +42,13 @@ def add_expense():
     print("current expenses: ", expenses)
 
 def view_expenses():
-    print("View expenses")
+    print("Your expenses")
+    print()
+
+    for index, expense in enumerate(expenses):
+        print(f"{index + 1}. Description: {expense['description']}, Category: {expense['category']}, Amount: {expense['amount']}")
+
+
 
 choice = ""
 
