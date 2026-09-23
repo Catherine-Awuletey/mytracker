@@ -13,9 +13,21 @@ print()
 print(f"Hello {name}, let's get started!")
 print()
 
-def add_expense():
-    print("Add expense here")
 
+def add_expense():
+    expense = input("Enter expense description: ")
+    category = input("Enter expense category: ")
+    amount = float(input("Enter expense amount: "))
+
+    print()
+
+    print("Expense added successfully!")
+
+    print()
+
+    print(f"Description: {expense}")
+    print(f"Category: {category}")
+    print(f"Amount: {amount}")
 
 def view_expenses():
     print("View expenses")
@@ -51,3 +63,5 @@ while choice != "3":
         print()
 print("Goodbye!")
 print("=========================")
+
+
