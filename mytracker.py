@@ -20,7 +20,13 @@ expenses = []
 def add_expense():
     description = input("Enter expense description: ")
     category = input("Enter expense category: ")
-    amount = float(input("Enter expense amount: "))
+    while True:
+        try:
+            amount = float(input("Enter expense amount: "))
+            break
+        except ValueError:
+            print("Invalid amount. Please enter a numeric value.")
+            continue
 
     print()
 
@@ -62,20 +68,24 @@ def save_expenses():
                     expense["amount"]])   
         
 def load_expenses():
-    with open("expenses.csv", "r", newline="") as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip the header row
+    try:
+        with open("expenses.csv", "r", newline="") as file:
+            reader = csv.reader(file)
+            next(reader)  # Skip the header row
 
-        for row in reader:
-            description = row[0]
-            category = row[1]
-            amount = float(row[2])
+            for row in reader:
+                description = row[0]
+                category = row[1]
+                amount = float(row[2])
 
-            expenses.append({
-                "description": description,
-                "category": category,
-                "amount": amount
-            })  
+                expenses.append({
+                    "description": description,
+                    "category": category,
+                    "amount": amount
+                })
+
+    except FileNotFoundError:
+        pass
 
 load_expenses()
 
