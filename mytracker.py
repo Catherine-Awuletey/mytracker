@@ -76,6 +76,7 @@ def add_expense():
     print()
 
     print(new_expense)
+    print()
 
     # add new expense to expenses
 
@@ -124,6 +125,25 @@ def load_expenses():
 
 load_expenses()
 
+
+def expense_summary():
+    total = 0
+    for expense in expenses:
+        total += expense["amount"]
+    print(f"Total expenses: {total:.2f}")
+
+    category_totals = {}
+
+    for category in categories:
+        category_totals[category] = 0
+
+    for expense in expenses:
+        category = expense["category"]
+        category_totals[category] += expense["amount"]
+
+    for category, total in category_totals.items():
+        print(f"Total expenses for {category}: {total:.2f}")
+
 choice = ""
 
 # while loop to run after each input and exit on 3
@@ -155,5 +175,6 @@ while choice != "3":
         print("Invalid option. Please try again.")
         print()
 print("Goodbye!")
+expense_summary()
 print("=========================")
 
