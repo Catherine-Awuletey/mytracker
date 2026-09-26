@@ -17,9 +17,43 @@ print()
 
 expenses = []
 
+categories = [
+    "Inventory",
+    "Transportation",
+    "Food",
+    "Utilities",
+    "Entertainment"
+]
+
+# adding an expense
 def add_expense():
+    # ask the user for their description
     description = input("Enter expense description: ")
-    category = input("Enter expense category: ")
+
+    print("Choose a category:")
+    # print choose a category and print the list of categories
+    for index, category in enumerate(categories):
+        print(f"{index + 1}. {category}")
+
+    # ask the user to choose a category and run till one is selected
+    while True:
+        try:
+            category_choice = int(input("Enter category number: "))
+
+            # if the enters category is valid, its index is index-1 in our list
+
+            if 1 <= category_choice <= len(categories):
+                category = categories[category_choice - 1]
+                break
+            else:
+                # any number outside of our list is invalid
+                print("Invalid category number. Please choose a number from the menu.")
+                # print if value error
+        except ValueError:
+            print("Invalid input. Please enter a number." )
+                
+
+# ask the user for the amount and run till a valid number is entered
     while True:
         try:
             amount = float(input("Enter expense amount: "))
@@ -29,6 +63,7 @@ def add_expense():
             continue
 
     print()
+
 
     new_expense = {
         "description": description,
@@ -42,11 +77,11 @@ def add_expense():
 
     print(new_expense)
 
-    # print(f"Description: {expense}")
-    # print(f"Category: {category}")
-    # print(f"Amount: {amount}")
+    # add new expense to expenses
 
     expenses.append(new_expense)
+
+    # call to save expenses in csv file 
     save_expenses()
     print("current expenses: ", expenses)
 
@@ -121,6 +156,4 @@ while choice != "3":
         print()
 print("Goodbye!")
 print("=========================")
-
-load_expenses()
 
