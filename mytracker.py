@@ -147,7 +147,7 @@ def expense_summary():
 choice = ""
 
 # while loop to run after each input and exit on 3
-while choice != "3":
+while choice != "4":
     # display the menu on each refresh and get input
     print("=========================")
     print("Menu")
@@ -155,7 +155,8 @@ while choice != "3":
     print()
     print("1. Add Expense")
     print("2. View Expenses")
-    print("3. Exit")
+    print("3. Expense Summary")
+    print("4. Exit")
     print()
     print("=========================")
     print()
@@ -170,6 +171,9 @@ while choice != "3":
         save_expenses()
         print()
     elif choice == "3":
+        expense_summary()
+        print()    
+    elif choice == "4":
         print("Exiting...")
     else:
         print("Invalid option. Please try again.")
