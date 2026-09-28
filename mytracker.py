@@ -144,6 +144,22 @@ def expense_summary():
     for category, total in category_totals.items():
         print(f"Total expenses for {category}: {total:.2f}")
 
+
+    print()
+
+
+    highest_expense = None    
+
+    for expense in expenses:
+        if highest_expense is None or expense["amount"] > highest_expense["amount"]:
+            highest_expense = expense
+
+    if highest_expense:
+        print("Highest expense:")
+        print("Description:", highest_expense['description'])
+        print("Category:", highest_expense['category'])
+        print(f"Amount: GHS {highest_expense['amount']:.2f}")
+
 choice = ""
 
 # while loop to run after each input and exit on 3
